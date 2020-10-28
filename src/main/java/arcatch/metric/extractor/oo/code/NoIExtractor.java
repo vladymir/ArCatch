@@ -16,9 +16,8 @@ public class NoIExtractor extends AbstractProcessor<CtClass<?>> {
 
 		if (Util.isValid(element)) {
 			String qualifiedName = element.getQualifiedName();
-			double numberOfInvocations = element.getMethods().size();
 			TypeFilter<CtInvocation<?>> invocationFilter = new TypeFilter<CtInvocation<?>>(CtInvocation.class);
-			numberOfInvocations = element.getElements(invocationFilter).size();
+			double numberOfInvocations = element.getElements(invocationFilter).size();
 			Model.addMeasure(qualifiedName, new Measure(Metric.NoI, numberOfInvocations));
 		}
 	}

@@ -226,9 +226,7 @@ public class UnitImpl implements Unit {
 		Set<Operation> matched = new HashSet<>();
 		final Pattern pattern = Pattern.compile(searchPattern.getCompiledMethodSearchPattern());
 		for (Operation operation : operations) {
-			if (operation.isConstructor()) {
-				matched.add(operation);
-			} else if (pattern.matcher(operation.getExtendedSignature()).matches()) {
+			if (operation.isConstructor() || pattern.matcher(operation.getExtendedSignature()).matches()) {
 				matched.add(operation);
 			}
 		}
