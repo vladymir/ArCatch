@@ -22,12 +22,11 @@ public class NoSFExtractor extends AbstractProcessor<CtClass<?>> {
 				if (tryClause.getFinalizer() != null) {
 					TypeFilter<CtInvocation<?>> invocationFilter = new TypeFilter<CtInvocation<?>>(CtInvocation.class);
 					for (CtInvocation<?> invocation : tryClause.getElements(invocationFilter)) {
-						if (invocation.getTarget() != null) {
-							if (invocation.getExecutable() != null && invocation.getExecutable().getDeclaration() != null) {
-								if (!invocation.getExecutable().getDeclaration().getThrownTypes().isEmpty()) {
+						if (invocation.getTarget() != null &&
+							invocation.getExecutable() != null && invocation.getExecutable().getDeclaration() != null &&
+							!invocation.getExecutable().getDeclaration().getThrownTypes().isEmpty()) {
+
 									numberOfSignalingsInFinallyBlocks++;
-								}
-							}
 						}
 					}
 				}

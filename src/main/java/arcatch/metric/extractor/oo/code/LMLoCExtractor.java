@@ -19,15 +19,13 @@ public class LMLoCExtractor extends AbstractProcessor<CtClass<?>> {
 
 			if (!element.isInterface()) {
 				for (CtMethod<?> method : element.getMethods()) {
-					if (!method.isAbstract()) {
-						if (method.getBody() != null && method.getBody().getStatements() != null
-								&& method.getBody().getStatements().size() > 0) {
+					if (!method.isAbstract() && method.getBody() != null &&
+						method.getBody().getStatements() != null && method.getBody().getStatements().size() > 0) {
 							int startLine = method.getBody().getPosition().getLine();
 							int endLine = method.getBody().getPosition().getEndLine();
 							if (longetMethod < (endLine - startLine)) {
 								longetMethod = endLine - startLine;
 							}
-						}
 					}
 				}
 			}

@@ -218,12 +218,10 @@ public class ModelBuilder {
 			operation.setStatic(((CtMethod<?>) executable).isStatic());
 		}
 
-		if (!executable.isImplicit()) {
-			if (executable.getPosition().isValidPosition()) {
+		if (!executable.isImplicit() && executable.getPosition().isValidPosition()) {
 				int begin = executable.getPosition().getLine();
 				int end = executable.getPosition().getEndLine();
 				operation.setPosition(new PositionImpl(begin, end));
-			}
 		}
 		operation.setName(executable.getSimpleName());
 		operation.setSignature(executable.getSignature());
@@ -422,16 +420,13 @@ public class ModelBuilder {
 						}
 						Operation calleeUnitOperation = calleeUnit
 								.getOperation(calleeInvocation.getExecutable().getSignature());
-						if (calleeUnitOperation == null) {
-
-							if (calleeInvocation.getExecutable().getExecutableDeclaration() != null) {
+						if (calleeUnitOperation == null && calleeInvocation.getExecutable().getExecutableDeclaration() != null) {
 								// if (calleeInvocation.getExecutable().getDeclaration() != null) {
 								calleeUnitOperation = extractExecutableFacts(
 										calleeInvocation.getExecutable().getExecutableDeclaration());
 								// calleeUnitOperation =
 								// extractExecutableFacts(calleeInvocation.getExecutable().getDeclaration());
 								calleeUnit.addOperation(calleeUnitOperation);
-							}
 						}
 						if (callerUnitOperation != null && calleeUnitOperation != null)
 							Model.addOperationCall(callerUnitOperation, calleeUnitOperation);

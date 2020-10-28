@@ -193,10 +193,9 @@ public class OperationImpl implements Operation {
 	public boolean matches(SearchPattern pattern) {
 		final Pattern classPattern = Pattern.compile(pattern.getClassSearchPattern());
 		final Pattern methodPattern = Pattern.compile(pattern.getCompiledMethodSearchPattern());
-		if (classPattern.matcher(getOwner().getQualifiedName()).matches()) {
-			if (methodPattern.matcher(getSignature()).matches()) {
+		if (classPattern.matcher(getOwner().getQualifiedName()).matches() &&
+			methodPattern.matcher(getSignature()).matches()) {
 				return true;
-			}
 		}
 		return false;
 	}
@@ -220,10 +219,10 @@ public class OperationImpl implements Operation {
 		final Pattern classPattern = Pattern.compile(searchPattern.getClassSearchPattern());
 		final Pattern methodPattern = Pattern.compile(searchPattern.getCompiledMethodSearchPattern());
 		for (Operation method : this.callers.values()) {
-			if (classPattern.matcher(method.getOwner().getQualifiedName()).matches()) {
-				if (methodPattern.matcher(method.getExtendedSignature()).matches()) {
+			if (classPattern.matcher(method.getOwner().getQualifiedName()).matches() &&
+				methodPattern.matcher(method.getExtendedSignature()).matches()) {
+
 					matched.add(method);
-				}
 			}
 		}
 		return matched;
@@ -264,10 +263,10 @@ public class OperationImpl implements Operation {
 		final Pattern classPattern = Pattern.compile(searchPattern.getClassSearchPattern());
 		final Pattern methodPattern = Pattern.compile(searchPattern.getCompiledMethodSearchPattern());
 		for (Operation method : this.callees.values()) {
-			if (classPattern.matcher(method.getOwner().getQualifiedName()).matches()) {
-				if (methodPattern.matcher(method.getExtendedSignature()).matches()) {
+			if (classPattern.matcher(method.getOwner().getQualifiedName()).matches() &&
+				methodPattern.matcher(method.getExtendedSignature()).matches()) {
+
 					matched.add(method);
-				}
 			}
 		}
 		return matched;
