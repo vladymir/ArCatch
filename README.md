@@ -18,6 +18,17 @@ ArCatch is a tool for static-architecture conformance checking of exception hand
 
 ArCatch is implemented in Java and its current version provides support only for Java programs.
 
+Architecture drift and erosion are problems in software development. The first one, occurs when the system implements an architecture that is not specified but does not violate project design pretended. The second, on the other hand, is worse because it violates. ArCatch verifies these problems in a target system based on defined rules.
+
+First, we need to do the basic configuration, informing pathing and dependencies. After, defined modules and exceptions as a compartment. The rules are specified using the compartments they can be: Only can, Can only, Cannot and Must the rules have relations that can be 'raise', 'reraise', 'signal', 'handle', 'remap' and 'flow'. The general syntax for the rules are <id> rule <relation> <id> and an optional part ['to' id...]. 
+
+There are some important things to notice, the relations raise, reraise, signal and handle must connect module to exception and the optional part can't be used, the relation remap need the optional part to an exception and the last relation flow connects an exception to an module that will start the flow and can be addressed the optional part to indicate the modules that the expectation can flow.
+
+We can see in the images a class diagram representing the implementation of some class of the dsl folder. In general we have an Builder implementing some interfaces representing an order to build the class. For example, ConfigurationBuilder implements ConfigBegin, ConfigPath, ConfigDependecies and ConfigEnd always returning itself. See, configurationBuilder() from ArCatchAPI return an ConfigBegin calls projectName or projectNameAndVersion returning an ConfigPath and this calls projectPath or projectPathWithMaven and so on. Changing this order can result in problems.
+
+![classdiagram](docs/img/class_diagram.png)
+
+
 ArCatch in 5 steps
 ------------------
 
