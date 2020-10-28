@@ -24,7 +24,7 @@ public class LMLoCExtractor extends AbstractProcessor<CtClass<?>> {
 							int startLine = method.getBody().getPosition().getLine();
 							int endLine = method.getBody().getPosition().getEndLine();
 							if (longetMethod < (endLine - startLine)) {
-								longetMethod = endLine - startLine;
+								longetMethod = (double) endLine - startLine;
 							}
 					}
 				}

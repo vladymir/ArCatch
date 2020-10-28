@@ -11,7 +11,7 @@ public class Matrix {
 
 	private List<String> columnLabels = new ArrayList<>();
 
-	private double data[][] = null;
+	private double[][] data = null;
 
 	private double[] rowAverages = null;
 
