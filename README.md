@@ -1,3 +1,15 @@
+<p align="">
+    <a alt="ArCatch">
+       <img src="https://img.shields.io/badge/Version-2.0-green.svg" />
+    </a>
+    <a alt="Java">
+        <img src="https://img.shields.io/badge/Java-v1.8-orange.svg" />
+    </a>
+    <a alt="Spoon">
+        <img src="https://img.shields.io/badge/Spoon-v8-blue.svg" />
+    </a>
+</p>
+
 # ArCatch
 
 ArCatch is a tool for static-architecture conformance checking of exception handling design, which deals with the **Exception Handling Degradation** problem. ArCatch is composed of two main parts: 
@@ -127,6 +139,36 @@ ArCatch in 5 steps
 
     ArCatchAPI.check();
     ```
+
+Architecture
+------------------
+
+The solution architecture is a product of the quality attributes extracted from the requirements and business rules. The current architectural organization schema looks as follows:
+
+![arch](docs/img/ArCatch-v2.0.0.png)
+
+- ArCatchAPI:
+    - Exports main methods for tool execution call
+        - Generate and export conformance reports
+        - Exports methods to add rules
+        - Exports methods to add compartments
+    - Use pre-defined models that specify operations, positions, units, filters and builders
+
+    - Context Configuration Module:
+        - Allow to configure all architectural elements to be considered on conformance checking, 
+        - Exports methods to specify dependencies 
+        - Add compartments 
+        - To specify rules to be applied on project to be evaluated (use [maxParser](http://mathparser.org/) for evaluate some of mathematical expressions)
+        
+    - Measure Module:
+        - Define and storage metric models.
+        - Exports extractors to perform metric measurement during conformance checking.
+    - Directly import [Spoon](http://spoon.gforge.inria.fr/) to transpile Java source code and generate results for check proccess.
+
+qExternal libraries dependencies:
+
+- [Spoon](http://spoon.gforge.inria.fr/) - Source Code Analysis and Transformation for Java
+- [maxParser](http://mathparser.org/) - Math Expressions Parser for Java
 
 Source Code Metrics Supported
 -----------------------------
