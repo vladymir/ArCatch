@@ -171,7 +171,7 @@ public class AntiDriftRuleImpl implements AntiDriftRule {
 
 	@Override
 	public int compareTo(DesignRule object) {
-		if (object != null && object instanceof DesignRule) {
+		if (object instanceof DesignRule) {
 			return this.getId().compareTo(((DesignRule) object).getId());
 		}
 		return 0;

@@ -273,7 +273,7 @@ public class UnitImpl implements Unit {
 
 	@Override
 	public boolean equals(Object object) {
-		if (object != null && object instanceof Unit) {
+		if (object instanceof Unit) {
 			return this.getQualifiedName().equals(((Unit) object).getQualifiedName());
 		}
 		return false;
@@ -286,7 +286,7 @@ public class UnitImpl implements Unit {
 
 	@Override
 	public int compareTo(Unit object) {
-		if (object != null && object instanceof Unit) {
+		if (object instanceof Unit) {
 			return this.getQualifiedName().compareTo(((Unit) object).getQualifiedName());
 		}
 		return 0;

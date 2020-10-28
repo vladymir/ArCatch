@@ -139,7 +139,7 @@ public abstract class AntiErosionRuleImpl implements AntiErosionRule {
 
 	@Override
 	public int compareTo(DesignRule object) {
-		if (object != null && object instanceof DesignRule) {
+		if (object instanceof DesignRule) {
 			return this.getId().compareTo(((DesignRule) object).getId());
 		}
 		return 0;

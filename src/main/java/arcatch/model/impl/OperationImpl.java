@@ -607,7 +607,7 @@ public class OperationImpl implements Operation {
 	}
 
 	public boolean equals(Object object) {
-		if (object != null && object instanceof Operation) {
+		if (object instanceof Operation) {
 			return this.getQualifiedSignature().equals(((Operation) object).getQualifiedSignature());
 		}
 		return false;
