@@ -145,8 +145,6 @@ Architecture
 
 The solution architecture is a product of the quality attributes extracted from the requirements and business rules. The current architectural organization schema looks as follows:
 
-![arch](docs/img/ArCatch-v2.0.0.png)
-
 - ArCatchAPI:
     - Exports main methods for tool execution call
         - Generate and export conformance reports
@@ -165,10 +163,12 @@ The solution architecture is a product of the quality attributes extracted from 
         - Exports extractors to perform metric measurement during conformance checking.
     - Directly import [Spoon](http://spoon.gforge.inria.fr/) to transpile Java source code and generate results for check proccess.
 
-qExternal libraries dependencies:
+External libraries dependencies:
 
 - [Spoon](http://spoon.gforge.inria.fr/) - Source Code Analysis and Transformation for Java
 - [maxParser](http://mathparser.org/) - Math Expressions Parser for Java
+
+![arch](docs/img/ArCatch-v2.0.0.png)
 
 Source Code Metrics Supported
 -----------------------------
