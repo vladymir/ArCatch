@@ -56,7 +56,7 @@ public class CompartmentImpl implements Compartment {
 
 	@Override
 	public int compareTo(Compartment object) {
-		if (object != null && object instanceof Compartment) {
+		if (object instanceof Compartment) {
 			return this.getId().compareTo(((Compartment) object).getId());
 		}
 		return 0;

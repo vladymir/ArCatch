@@ -226,9 +226,7 @@ public class UnitImpl implements Unit {
 		Set<Operation> matched = new HashSet<>();
 		final Pattern pattern = Pattern.compile(searchPattern.getCompiledMethodSearchPattern());
 		for (Operation operation : operations) {
-			if (operation.isConstructor()) {
-				matched.add(operation);
-			} else if (pattern.matcher(operation.getExtendedSignature()).matches()) {
+			if (operation.isConstructor() || pattern.matcher(operation.getExtendedSignature()).matches()) {
 				matched.add(operation);
 			}
 		}
@@ -273,7 +271,7 @@ public class UnitImpl implements Unit {
 
 	@Override
 	public boolean equals(Object object) {
-		if (object != null && object instanceof Unit) {
+		if (object instanceof Unit) {
 			return this.getQualifiedName().equals(((Unit) object).getQualifiedName());
 		}
 		return false;
@@ -286,7 +284,7 @@ public class UnitImpl implements Unit {
 
 	@Override
 	public int compareTo(Unit object) {
-		if (object != null && object instanceof Unit) {
+		if (object instanceof Unit) {
 			return this.getQualifiedName().compareTo(((Unit) object).getQualifiedName());
 		}
 		return 0;

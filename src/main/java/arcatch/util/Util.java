@@ -14,6 +14,7 @@ import spoon.reflect.reference.CtTypeReference;
 public class Util {
 
 	private final static String REPORT_PATH = "./arcatchreports";
+	private final static String DATA_FORMAT = "yyyy-MM-dd-HH-mm-ss";
 
 	public static boolean isValid(CtType<?> element) {
 		return element != null && (element.isClass() || element.isInterface()) && !element.isAnonymous() && !element.isLocalType();
@@ -48,7 +49,7 @@ public class Util {
 		}
 
 		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat(DATA_FORMAT);
 		dateFormat.setTimeZone(calendar.getTimeZone());
 		StringBuffer reportName = new StringBuffer("arcatch-report-");
 		reportName.append(dateFormat.format(calendar.getTime()));
@@ -73,7 +74,7 @@ public class Util {
 		}
 
 		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat(DATA_FORMAT);
 		//calendar.getTimeZone()
 		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 		StringBuffer reportName = new StringBuffer(label);
@@ -100,7 +101,7 @@ public class Util {
 		}
 
 		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat(DATA_FORMAT);
 		dateFormat.setTimeZone(calendar.getTimeZone());
 		StringBuffer reportName = new StringBuffer("arcatch-report-");
 		reportName.append(dateFormat.format(calendar.getTime()));

@@ -16,7 +16,6 @@ public class MetricsSuiteReporter implements Reporter {
 				buffer.append(";");
 				buffer.append(measure.getMetric().getShortName());
 			}
-			break;
 		}
 
 		for (Unit unit : Model.getNotShadowClasses()) {

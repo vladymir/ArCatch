@@ -29,7 +29,7 @@ public class LCOM3Extractor extends AbstractProcessor<CtClass<?>> {
 					summation += numberOfMethodsAccessingField(element, field.getReference().getSimpleName());
 				}
 				lackOfCohesionOfMethods = (numberOfMethods - (summation / numberOfAttributes))
-						/ (double) (((numberOfMethods - 1.0) > 0.0) ? (numberOfMethods - 1.0) : (1.0));
+						/ (((numberOfMethods - 1.0) > 0.0) ? (numberOfMethods - 1.0) : (1.0));
 			}
 			Model.addMeasure(qualifiedName, new Measure(Metric.LCOM3, lackOfCohesionOfMethods));
 		}
